@@ -2,7 +2,7 @@
 
 ## How I worked on this project
 My goal was to simulate a professional work environment of a frontend developer
-- I built this app based on Figma design files:
+- I built this app based on Figma design files: [Design files found here](https://github.com/sephorus/rest-countries/tree/main/design)
 - I worked with tasks on a Kanban board: 
 - I used feature branches and pull requests
 
