@@ -20,16 +20,22 @@ class CountryDashboard extends React.Component {
 
     render() {
         return (
-            <ul className="countryItems">
-                {
-                    this.state.countryItems.map((country) => (
-                        <CountryCard
-                            key={country.numericCode}
-                            countryInfo={country}
-                        />
-                    ))
-                }
-            </ul>
+            <div className="countryDashboard">
+                <div className="countryItems">
+                    {
+                        this.state.countryItems.map((country) => (
+                            <CountryCard
+                                key={country.numericCode}
+                                countryName={country.name}
+                                countryFlagURL={country.flag}
+                                countryPopulation={country.population}
+                                countryRegion={country.region}
+                                countryCapital={country.capital}
+                            />
+                        ))
+                    }
+                </div>
+            </div>
         )
     }
 }
