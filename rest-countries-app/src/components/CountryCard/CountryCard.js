@@ -26,7 +26,7 @@ function CountryCard(props) {
 
     return (
         <div className="countryCard">
-            <img src={countryFlagURL} alt={`The country flag for ${countryName}`} />
+            <img loading="lazy" src={countryFlagURL} alt={`The country flag for ${countryName}`} />
 
             <div className="countryCard__info">
                 <h2>
