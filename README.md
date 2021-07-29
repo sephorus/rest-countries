@@ -10,9 +10,9 @@
 
 ## Quick Project Description
 
-This repository is to host the source code for my solution to the Frontend Mentor challenge, (REST Countries Web App)[https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca]
+This repository is to host the source code for my solution to the Frontend Mentor challenge [REST Countries Web App](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca)
 
-Users should be able to:
+Users should be able to
 
 -   See all countries from the API on the homepage
 -   Search for a country using an input field
