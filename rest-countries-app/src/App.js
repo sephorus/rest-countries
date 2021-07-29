@@ -1,10 +1,11 @@
 import './App.css';
+import CountryDashboard from './components/CountryDashboard/CountryDashboard';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>This will be my Explore the World Web Application</p>
+        <CountryDashboard />
       </header>
     </div>
   );
