@@ -1,5 +1,13 @@
 # Explore the World Web Application
 
+## Table of contents
+
+-   [Project Description](#quick-project-description)
+-   [Live Demo Link](#live-demo-link)
+-   [How I worked on this project](#how-i-worked-on-this-project)
+-   [How to navigate this project](#how-to-navigate-this-project)
+-   [Why I built the project this way](#why-i-built-the-project-this-way)
+
 ## Quick Project Description
 
 This repository is to host the source code for my solution to the Frontend Mentor challenge, (REST Countries Web App)[https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca]
@@ -13,7 +21,7 @@ Users should be able to:
 -   Click through to the border countries on the detail page
 -   Toggle the color scheme between light and dark mode
 
-## Where to find the live example?
+## Live Demo Link
 
 The live example is hosted on GitHub pages: [link to live example](https://sephorus.github.io/rest-countries/)
 
