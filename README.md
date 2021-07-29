@@ -2,13 +2,13 @@
 
 ## Table of contents
 
--   [Project Description](#quick-project-description)
+-   [Project Description](#project-description)
 -   [Live Demo Link](#live-demo-link)
 -   [How I worked on this project](#how-i-worked-on-this-project)
 -   [How to navigate this project](#how-to-navigate-this-project)
 -   [Why I built the project this way](#why-i-built-the-project-this-way)
 
-## Quick Project Description
+## Project Description
 
 This repository is to host the source code for my solution to the Frontend Mentor challenge [REST Countries Web App](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca)
 
