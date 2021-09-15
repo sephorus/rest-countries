@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "./CountryCard.scss";
 
 function CountryCard(props) {
@@ -12,7 +13,7 @@ function CountryCard(props) {
         countryFlagURL = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
     }
 
-    if (!countryPopulation || countryPopulation == 0) {
+    if (!countryPopulation || countryPopulation === 0) {
         countryPopulation = "Not know";
     }
 
@@ -25,7 +26,10 @@ function CountryCard(props) {
     }
 
     return (
-        <div className="countryCard">
+        <Link
+            to={`/rest-countries/${countryName.toLowerCase()}`}
+            className="countryCard"
+        >
             <img loading="lazy" src={countryFlagURL} alt={`The country flag for ${countryName}`} />
 
             <div className="countryCard__info">
@@ -48,7 +52,7 @@ function CountryCard(props) {
                 </div>
             </div>
 
-        </div>
+        </Link>
     )
 }
 

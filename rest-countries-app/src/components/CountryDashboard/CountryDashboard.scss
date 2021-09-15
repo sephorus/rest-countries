@@ -1,11 +1,7 @@
 .countryItems {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
-    grid-template-rows: 1fr;
-    grid-gap: 75px;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
     max-width: 1281px;
     margin: 0 auto;
-    flex-wrap: wrap;
-    align-items: center;
+    gap: 75px;
 }
