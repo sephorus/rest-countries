@@ -9,7 +9,7 @@
     grid-template-columns: repeat(2, 1fr);
 
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     margin-top: 80px;
 
@@ -51,4 +51,21 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 141px;
     margin-bottom: 68px;
+}
+
+.back-button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+
+    img {
+        max-height: 25px;
+        margin-right: 10px;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
 }

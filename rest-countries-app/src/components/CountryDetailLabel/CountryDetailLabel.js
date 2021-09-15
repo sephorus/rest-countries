@@ -6,9 +6,9 @@ import "../CountryDetailLabel/CountryDetailLabel.scss"
 // react imports
 import React from 'react'
 import { Link } from "react-router-dom"
-import PropTypes from 'prop-types'
 
 function CountryDetailLabel(props) {
+    console.log(props)
     return (
         <p className="label-component">
             <span className="label-title">
@@ -23,26 +23,23 @@ function CountryDetailLabel(props) {
             }
             {
                 (typeof (props.labelContent) != "string" && typeof (props.labelContent) != "number") && (
-                    props.labelContent.map((neighbor) => (
-                        <Link
-                            to={"/rest-countries/" + neighbor.name.toLowerCase()}
-                            className="neighbor"
-                        >
-                            {
-                                neighbor.name
-                            }
-                        </Link>
-                    ))
+                    props.labelContent.map((neighbor) => {
+                        return (
+                            <Link
+                                to={"/rest-countries/" + neighbor.name.toLowerCase()}
+                                className="neighbor"
+                                key={neighbor.name.toLowerCase()}
+                            >
+                                {
+                                    neighbor.name
+                                }
+                            </Link>
+                        )
+                    })
                 )
             }
-        </p>
+        </p >
     )
 }
 
 export default CountryDetailLabel
-
-// expected to pass the title of the label, as well as the content
-// example: Population (labelTitle): 10,000,000 (labelContent)
-// CountryDetailLabel.propTypes = {
-//     labelTitle: PropTypes.string.isRequired
-// }
