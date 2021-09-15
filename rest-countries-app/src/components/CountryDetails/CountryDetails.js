@@ -12,19 +12,24 @@ import { Link } from 'react-router-dom'
 class CountryDetails extends React.Component {
     constructor(props) {
         super(props)
+
+        // initial default state
         this.state = {
             country: {},
             neighbors: []
         }
     }
 
+    // will run this asynchronous function upon mounting
     componentDidMount = async () => {
+        // returns an array of countries with a matching name
         const response = await fetch(`https://restcountries.eu/rest/v2/name/${this.props.match.params.countryName}?fullText=true`);
         let json = await response.json();
         json = json[0]
 
         const neighborList = json.borders
 
+        // trying to get the country objects given the bordering countries alpha3 codes
         const neighborItems = []
         neighborList.map(async (neighbor) => {
             const response = await fetch(`https://restcountries.eu/rest/v2/alpha/${neighbor}`)
@@ -32,6 +37,7 @@ class CountryDetails extends React.Component {
             neighborItems.push(json)
         })
 
+        // update the state with the target country and its neighboring country objects
         this.setState({
             country: json,
             neighbors: neighborItems
@@ -43,6 +49,8 @@ class CountryDetails extends React.Component {
         let countryLanguages = ''
         let countryCurrencies = ''
         let topLevelDomain = ''
+
+        // once the country object has been loaded in, create the strings for the CountryDetailLabel component
         if (Object.keys(this.state.country).length !== 0) {
             this.state.country.languages.forEach(element => {
                 countryLanguages += element.name + ", "
@@ -83,7 +91,9 @@ class CountryDetails extends React.Component {
                                 <CountryDetailLabel labelTitle="Languages" labelContent={countryLanguages} />
                             </div>
                         </div>
+
                         {
+                            // conditionally render the bordering countries since some do not have any
                             this.state.neighbors.length !== 0 && (
                                 <div className="country-near">
                                     <CountryDetailLabel labelTitle="Border Countries" labelContent={this.state.neighbors} />
