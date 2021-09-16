@@ -8,21 +8,15 @@ import React from 'react'
 import { Link } from "react-router-dom"
 
 function CountryDetailLabel(props) {
-    console.log(props)
-    return (
-        <p className="label-component">
-            <span className="label-title">
+    if (props.labelType) {
+        return (
+            <div className="country-near">
+                <span className="label-title">
+                    {
+                        props.labelTitle + ": "
+                    }
+                </span>
                 {
-                    props.labelTitle + ": "
-                }
-            </span>
-            {
-                (typeof (props.labelContent) === "string" || typeof (props.labelContent) === "number") && (
-                    props.labelContent
-                )
-            }
-            {
-                (typeof (props.labelContent) != "string" && typeof (props.labelContent) != "number") && (
                     props.labelContent.map((neighbor) => {
                         return (
                             <Link
@@ -36,10 +30,23 @@ function CountryDetailLabel(props) {
                             </Link>
                         )
                     })
-                )
-            }
-        </p >
-    )
+                }
+            </div>
+        )
+    } else {
+        return (
+            <p className="label-component">
+                <span className="label-title">
+                    {
+                        props.labelTitle + ": "
+                    }
+                </span>
+                {
+                    props.labelContent
+                }
+            </p >
+        )
+    }
 }
 
 export default CountryDetailLabel

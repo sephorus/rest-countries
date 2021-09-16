@@ -36,7 +36,7 @@ class App extends React.Component {
           <Route
             exact
             path="/rest-countries/:countryName"
-            render={(props) => <CountryDetails {...props} countryItems={this.state.countryItems} />}
+            render={(props) => <CountryDetails {...props} />}
           />
 
           <Route

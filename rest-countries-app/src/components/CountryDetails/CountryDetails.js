@@ -23,26 +23,53 @@ class CountryDetails extends React.Component {
     // will run this asynchronous function upon mounting
     componentDidMount = async () => {
         // returns an array of countries with a matching name
+        try {
+            const countryObject = await this.getCountry();
+            this.setState({
+                country: countryObject
+            })
+
+            try {
+                const neighbors = await this.getNeighbors(this.state.country.borders);
+                this.setState({
+                    neighbors: neighbors
+                })
+            } catch (e) {
+                console.log(e);
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    componentDidUpdate = async () => {
+        try {
+            const countryObject = await this.getCountry();
+            this.setState({
+                country: countryObject
+            })
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    // get country objects of neighboring countries given their alpha codes
+    getNeighbors = async (neighbors) => {
+        let neighborItems = Promise.all(neighbors.map(async (neighbor) => {
+            const response = await fetch(`https://restcountries.eu/rest/v2/alpha/${neighbor}`)
+            return await response.json()
+        }))
+
+        return neighborItems
+    }
+
+    // call endpoint for country object with matching name
+    getCountry = async () => {
         const response = await fetch(`https://restcountries.eu/rest/v2/name/${this.props.match.params.countryName}?fullText=true`);
         let json = await response.json();
-        json = json[0]
-
-        const neighborList = json.borders
-
-        // trying to get the country objects given the bordering countries alpha3 codes
-        const neighborItems = []
-        neighborList.map(async (neighbor) => {
-            const response = await fetch(`https://restcountries.eu/rest/v2/alpha/${neighbor}`)
-            const json = await response.json()
-            neighborItems.push(json)
-        })
-
-        // update the state with the target country and its neighboring country objects
-        this.setState({
-            country: json,
-            neighbors: neighborItems
-        })
-
+        json = json[0];
+        return json;
     }
 
     render() {
@@ -93,13 +120,11 @@ class CountryDetails extends React.Component {
                         </div>
 
                         {
-                            // conditionally render the bordering countries since some do not have any
                             this.state.neighbors.length !== 0 && (
-                                <div className="country-near">
-                                    <CountryDetailLabel labelTitle="Border Countries" labelContent={this.state.neighbors} />
-                                </div>
+                                <CountryDetailLabel labelTitle="Border Countries" labelType="Nested" labelContent={this.state.neighbors} />
                             )
                         }
+
                     </section>
                 </div>
             </div>
