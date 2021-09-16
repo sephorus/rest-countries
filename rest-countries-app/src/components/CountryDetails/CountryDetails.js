@@ -43,14 +43,29 @@ class CountryDetails extends React.Component {
         }
     }
 
-    componentDidUpdate = async () => {
-        try {
-            const countryObject = await this.getCountry();
-            this.setState({
-                country: countryObject
-            })
-        } catch (e) {
-            console.log(e);
+    // will run this asynchronous function upon mounting
+    componentDidUpdate = async (prevProps) => {
+
+        if (this.props !== prevProps) {
+            // returns an array of countries with a matching name
+            try {
+                const countryObject = await this.getCountry();
+                this.setState({
+                    country: countryObject
+                })
+
+                try {
+                    const neighbors = await this.getNeighbors(this.state.country.borders);
+                    this.setState({
+                        neighbors: neighbors
+                    })
+                } catch (e) {
+                    console.log(e);
+                }
+
+            } catch (e) {
+                console.log(e);
+            }
         }
     }
 
