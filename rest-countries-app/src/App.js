@@ -15,8 +15,15 @@ class App extends React.Component {
     super(props);
     this.state = {
       countryItems: []
+      // searchValue: ''
     }
   }
+
+  // onSearchChange = (searchValue) => {
+  //   this.setState({
+  //     searchValue: searchValue
+  //   })
+  // }
 
   componentDidMount = async () => {
     const response = await fetch('https://restcountries.eu/rest/v2/all');
